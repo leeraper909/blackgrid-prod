@@ -1,7 +1,331 @@
 {
-  "count": 145,
-  "updatedAt": "2025-09-04T22:57:10.398Z",
+  "count": 146,
+  "updatedAt": "2025-09-05T15:02:25.273Z",
   "items": [
+    {
+      "title": "Why Browser Company at $610M is cheap",
+      "link": "https://bigtechpr.substack.com/p/why-browser-co-610m-is-cheap",
+      "ts": 1757083087000,
+      "source": "hnrss.org",
+      "country": "World",
+      "lat": 20,
+      "lon": 0
+    },
+    {
+      "title": "Microsoft gives US students a free year of Microsoft 365 Personal",
+      "link": "https://www.bleepingcomputer.com/news/microsoft/microsoft-gives-us-students-a-free-year-of-microsoft-365-personal/",
+      "ts": 1757082663000,
+      "source": "bleepingcomputer.com",
+      "country": "US",
+      "lat": 39,
+      "lon": -98
+    },
+    {
+      "title": "1TB Raspberry Pi SSD on sale now for $70",
+      "link": "https://www.raspberrypi.com/news/1tb-raspberry-pi-ssd-on-sale-now-for-70/",
+      "ts": 1757082007000,
+      "source": "hnrss.org",
+      "country": "World",
+      "lat": 20,
+      "lon": 0
+    },
+    {
+      "title": "Don’t let outdated IGA hold back your security, compliance, and growth",
+      "link": "https://www.bleepingcomputer.com/news/security/dont-let-outdated-iga-hold-back-your-security-compliance-and-growth/",
+      "ts": 1757080932000,
+      "source": "bleepingcomputer.com",
+      "country": "US",
+      "lat": 39,
+      "lon": -98
+    },
+    {
+      "title": "Linux Mint 22.2 polishes the desktop, but kernel updates are the real deal",
+      "link": "https://go.theregister.com/feed/www.theregister.com/2025/09/05/linux_mint_222/",
+      "ts": 1757080932000,
+      "source": "theregister.com",
+      "country": "World",
+      "lat": 20,
+      "lon": 0
+    },
+    {
+      "title": "US economy added just 22,000 jobs in August, unemployment highest in 4 yrs",
+      "link": "https://www.cnn.com/2025/09/05/economy/us-jobs-report-august-final",
+      "ts": 1757080894000,
+      "source": "hnrss.org",
+      "country": "World",
+      "lat": 20,
+      "lon": 0
+    },
+    {
+      "title": "Critical SAP S/4HANA vulnerability now exploited in attacks",
+      "link": "https://www.bleepingcomputer.com/news/security/critical-sap-s-4hana-vulnerability-now-exploited-in-attacks/",
+      "ts": 1757079395000,
+      "source": "bleepingcomputer.com",
+      "country": "US",
+      "lat": 39,
+      "lon": -98
+    },
+    {
+      "title": "Huawei's battery energy storage systems run out of juice in the UK",
+      "link": "https://go.theregister.com/feed/www.theregister.com/2025/09/05/huawei_bess_uk/",
+      "ts": 1757078466000,
+      "source": "theregister.com",
+      "country": "World",
+      "lat": 20,
+      "lon": 0
+    },
+    {
+      "title": "Trump tells Big Tech: Your power woes? Totally fixable",
+      "link": "https://go.theregister.com/feed/www.theregister.com/2025/09/05/trump_rewards_tech_industry_loyalty/",
+      "ts": 1757078164000,
+      "source": "theregister.com",
+      "country": "World",
+      "lat": 20,
+      "lon": 0
+    },
+    {
+      "title": "Development Speed Has Never Been a Bottleneck",
+      "link": "https://pawelbrodzinski.substack.com/p/development-speed-is-not-a-bottleneck",
+      "ts": 1757078021000,
+      "source": "hnrss.org",
+      "country": "World",
+      "lat": 20,
+      "lon": 0
+    },
+    {
+      "title": "Data Modeling Guide for Real-Time Analytics with ClickHouse",
+      "link": "https://www.ssp.sh/blog/practical-data-modeling-clickhouse/",
+      "ts": 1757076687000,
+      "source": "hnrss.org",
+      "country": "World",
+      "lat": 20,
+      "lon": 0
+    },
+    {
+      "title": "Lava RGB",
+      "link": "https://amaiorano.io/2025/09/03/lava-rgb.html",
+      "ts": 1757076600000,
+      "source": "hnrss.org",
+      "country": "World",
+      "lat": 20,
+      "lon": 0
+    },
+    {
+      "title": "You're absolutely Right!",
+      "link": "https://absolutelyright.lol/",
+      "ts": 1757075807000,
+      "source": "hnrss.org",
+      "country": "World",
+      "lat": 20,
+      "lon": 0
+    },
+    {
+      "title": "Microsoft doing light work with Analog Optical Computer prototype",
+      "link": "https://go.theregister.com/feed/www.theregister.com/2025/09/05/microsoft_analog_optical_computer/",
+      "ts": 1757075407000,
+      "source": "theregister.com",
+      "country": "World",
+      "lat": 20,
+      "lon": 0
+    },
+    {
+      "title": "OpenAI eats jobs, then offers to help you find a new one at Walmart",
+      "link": "https://www.theregister.com/2025/09/05/openai_jobs_board/",
+      "ts": 1757074642000,
+      "source": "hnrss.org",
+      "country": "World",
+      "lat": 20,
+      "lon": 0
+    },
+    {
+      "title": "Using Your Phone on Toilet May Give You Hemorrhoids: Study",
+      "link": "https://www.nbcnews.com/health/health-news/phone-use-hemorrhoids-bathroom-social-media-scrolling-rcna228080",
+      "ts": 1757074636000,
+      "source": "hnrss.org",
+      "country": "World",
+      "lat": 20,
+      "lon": 0
+    },
+    {
+      "title": "Relace (YC W23) Is Hiring for Code LLM's (SF)",
+      "link": "https://news.ycombinator.com/item?id=45137554",
+      "ts": 1757073669000,
+      "source": "hnrss.org",
+      "country": "World",
+      "lat": 20,
+      "lon": 0
+    },
+    {
+      "title": "I Ditched Docker for Podman (and You Should Too)",
+      "link": "https://codesmash.dev/why-i-ditched-docker-for-podman-and-you-should-too",
+      "ts": 1757073419000,
+      "source": "hnrss.org",
+      "country": "World",
+      "lat": 20,
+      "lon": 0
+    },
+    {
+      "title": "Why ML Needs a New Programming Language",
+      "link": "https://signalsandthreads.com/why-ml-needs-a-new-programming-language/",
+      "ts": 1757072028000,
+      "source": "hnrss.org",
+      "country": "World",
+      "lat": 20,
+      "lon": 0
+    },
+    {
+      "title": "OpenAI eats jobs, then offers to help you find a new one at Walmart",
+      "link": "https://go.theregister.com/feed/www.theregister.com/2025/09/05/openai_jobs_board/",
+      "ts": 1757071994000,
+      "source": "theregister.com",
+      "country": "World",
+      "lat": 20,
+      "lon": 0
+    },
+    {
+      "title": "Nepal moves to block Facebook, X, YouTube and others",
+      "link": "https://www.aljazeera.com/news/2025/9/4/nepal-moves-to-block-facebook-x-youtube-and-others",
+      "ts": 1757071918000,
+      "source": "hnrss.org",
+      "country": "World",
+      "lat": 20,
+      "lon": 0
+    },
+    {
+      "title": "Interview with Japanese Demoscener – 0b5vr",
+      "link": "https://6octaves.com/2025/09/interview-with-demoscener-0b5vr.html",
+      "ts": 1757070506000,
+      "source": "hnrss.org",
+      "country": "World",
+      "lat": 20,
+      "lon": 0
+    },
+    {
+      "title": "US puts $10M bounty on three Russians accused of attacking critical infrastructure",
+      "link": "https://go.theregister.com/feed/www.theregister.com/2025/09/04/us_10m_bounty_fsb_attackers/",
+      "ts": 1757069943000,
+      "source": "theregister.com",
+      "country": "World",
+      "lat": 20,
+      "lon": 0
+    },
+    {
+      "title": "Fujitsu under fire for bidding on UK public sector deals despite Horizon scandal vow",
+      "link": "https://go.theregister.com/feed/www.theregister.com/2025/09/05/fujitsu_bid_pause_promise/",
+      "ts": 1757068487000,
+      "source": "theregister.com",
+      "country": "World",
+      "lat": 20,
+      "lon": 0
+    },
+    {
+      "title": "Knock-on effects of software dev break-in hit schools trust",
+      "link": "https://go.theregister.com/feed/www.theregister.com/2025/09/05/uk_schools_intradev_breach/",
+      "ts": 1757061013000,
+      "source": "theregister.com",
+      "country": "World",
+      "lat": 20,
+      "lon": 0
+    },
+    {
+      "title": "Techie ended vendor/client blame game by treating managers like toddlers",
+      "link": "https://go.theregister.com/feed/www.theregister.com/2025/09/05/on_call/",
+      "ts": 1757057466000,
+      "source": "theregister.com",
+      "country": "World",
+      "lat": 20,
+      "lon": 0
+    },
+    {
+      "title": "AI code assistants make developers more efficient at creating security problems",
+      "link": "https://go.theregister.com/feed/www.theregister.com/2025/09/05/ai_code_assistants_security_problems/",
+      "ts": 1757053748000,
+      "source": "theregister.com",
+      "country": "World",
+      "lat": 20,
+      "lon": 0
+    },
+    {
+      "title": "Broadcom admits it’s sold a lot of shelfware to VMware customers",
+      "link": "https://go.theregister.com/feed/www.theregister.com/2025/09/05/broadcom_q3_2025/",
+      "ts": 1757052078000,
+      "source": "theregister.com",
+      "country": "World",
+      "lat": 20,
+      "lon": 0
+    },
+    {
+      "title": "Swimming in Tech Debt",
+      "link": "https://helpthisbook.com/lou-franco/swimming-in-tech-debt",
+      "ts": 1757050383000,
+      "source": "hnrss.org",
+      "country": "World",
+      "lat": 20,
+      "lon": 0
+    },
+    {
+      "title": "Gamers frustrated as Hollow Knight: Silksong crashes stores on launch",
+      "link": "https://www.bbc.com/news/articles/ckgejpxzepko?at_medium=RSS&amp;at_campaign=rss",
+      "ts": 1757042849000,
+      "source": "feeds.bbci.co.uk",
+      "country": "UK",
+      "lat": 54.8,
+      "lon": -4.6
+    },
+    {
+      "title": "Uber India starts offering drivers gigs collecting and classifying info for AI models",
+      "link": "https://go.theregister.com/feed/www.theregister.com/2025/09/05/uber_india_ai_model_gigs/",
+      "ts": 1757041089000,
+      "source": "theregister.com",
+      "country": "World",
+      "lat": 20,
+      "lon": 0
+    },
+    {
+      "title": "Fil's Unbelievable Garbage Collector",
+      "link": "https://fil-c.org/fugc",
+      "ts": 1757033752000,
+      "source": "hnrss.org",
+      "country": "World",
+      "lat": 20,
+      "lon": 0
+    },
+    {
+      "title": "Evolving the OCaml Programming Language (2025) [pdf]",
+      "link": "https://kcsrk.info/slides/Evolution_Ashoka_2025.pdf",
+      "ts": 1757030750000,
+      "source": "hnrss.org",
+      "country": "World",
+      "lat": 20,
+      "lon": 0
+    },
+    {
+      "title": "Boffins detail new method to make neural nets forget private and copyrighted info",
+      "link": "https://go.theregister.com/feed/www.theregister.com/2025/09/04/boffins_detail_ai_mind_wipe/",
+      "ts": 1757030369000,
+      "source": "theregister.com",
+      "country": "World",
+      "lat": 20,
+      "lon": 0
+    },
+    {
+      "title": "Attackers snooping around Sitecore, dropping malware via public sample keys",
+      "link": "https://go.theregister.com/feed/www.theregister.com/2025/09/04/unknown_miscreants_snooping_around_sitecore/",
+      "ts": 1757027640000,
+      "source": "theregister.com",
+      "country": "World",
+      "lat": 20,
+      "lon": 0
+    },
+    {
+      "title": "The green steel firms looking to revive US steelmaking",
+      "link": "https://www.bbc.com/news/articles/czer07x9zp2o?at_medium=RSS&amp;at_campaign=rss",
+      "ts": 1757026877000,
+      "source": "feeds.bbci.co.uk",
+      "country": "UK",
+      "lat": 54.8,
+      "lon": -4.6
+    },
     {
       "title": "Boffins build automated Android bug hunting system",
       "link": "https://go.theregister.com/feed/www.theregister.com/2025/09/04/boffins_build_automated_android_bug_hunting/",
@@ -21,9 +345,9 @@
       "lon": 0
     },
     {
-      "title": "They blew up a boat far offshore, killed eleven people, and called it justice",
-      "link": "https://mitchthelawyer.substack.com/p/they-blew-up-a-boat-far-offshore",
-      "ts": 1757023380000,
+      "title": "io_uring is faster than mmap",
+      "link": "https://www.bitflux.ai/blog/memory-is-slow-part2/",
+      "ts": 1757023271000,
       "source": "hnrss.org",
       "country": "World",
       "lat": 20,
@@ -48,28 +372,10 @@
       "lon": 0
     },
     {
-      "title": "Rocketships and Slingshots",
-      "link": "https://postround.substack.com/p/rocketships-and-slingshots",
-      "ts": 1757019970000,
-      "source": "hnrss.org",
-      "country": "World",
-      "lat": 20,
-      "lon": 0
-    },
-    {
       "title": "China-aligned crew poisons Windows servers to manipulate Google results",
       "link": "https://go.theregister.com/feed/www.theregister.com/2025/09/04/new_chinaaligned_crew_poisons_windows_servers/",
       "ts": 1757019445000,
       "source": "theregister.com",
-      "country": "World",
-      "lat": 20,
-      "lon": 0
-    },
-    {
-      "title": "ICPC 2025 World Finals Results",
-      "link": "https://worldfinals.icpc.global/scoreboard/2025/index.html",
-      "ts": 1757018033000,
-      "source": "hnrss.org",
       "country": "World",
       "lat": 20,
       "lon": 0
@@ -93,24 +399,6 @@
       "lon": 0
     },
     {
-      "title": "Classic 8×8-pixel B&W Mac patterns",
-      "link": "https://www.pauladamsmith.com/blog/2025/09/classic-mac-patterns.html",
-      "ts": 1757015622000,
-      "source": "hnrss.org",
-      "country": "World",
-      "lat": 20,
-      "lon": 0
-    },
-    {
-      "title": "Action was the best 8-bit programming language",
-      "link": "https://www.goto10retro.com/p/action-was-the-best-8-bit-programming",
-      "ts": 1757013954000,
-      "source": "hnrss.org",
-      "country": "World",
-      "lat": 20,
-      "lon": 0
-    },
-    {
       "title": "No chips for you! Senator wants Americans to get first dibs on GPUs, restrict sales to others",
       "link": "https://go.theregister.com/feed/www.theregister.com/2025/09/04/us_senator_americans_first_ai_sillicon/",
       "ts": 1757013206000,
@@ -127,15 +415,6 @@
       "country": "US",
       "lat": 39,
       "lon": -98
-    },
-    {
-      "title": "LLM Visualization",
-      "link": "https://bbycroft.net/llm",
-      "ts": 1757009165000,
-      "source": "hnrss.org",
-      "country": "World",
-      "lat": 20,
-      "lon": 0
     },
     {
       "title": "Texas sues PowerSchool over breach exposing 62M students, 880k Texans",
@@ -165,91 +444,10 @@
       "lon": 0
     },
     {
-      "title": "Saquon Barkley is playing for equity",
-      "link": "https://www.readtheprofile.com/p/saquon-barkley-investment-portfolio",
-      "ts": 1757005628000,
-      "source": "hnrss.org",
-      "country": "World",
-      "lat": 20,
-      "lon": 0
-    },
-    {
-      "title": "Gamers frustrated as Hollow Knight: Silksong crashes stores on launch",
-      "link": "https://www.bbc.com/news/articles/ckgejpxzepko?at_medium=RSS&amp;at_campaign=rss",
-      "ts": 1757005443000,
-      "source": "feeds.bbci.co.uk",
-      "country": "UK",
-      "lat": 54.8,
-      "lon": -4.6
-    },
-    {
-      "title": "Artie (YC S23) Is Hiring Engineers, AES, and Senior PMM",
-      "link": "https://www.ycombinator.com/companies/artie/jobs",
-      "ts": 1757005281000,
-      "source": "hnrss.org",
-      "country": "World",
-      "lat": 20,
-      "lon": 0
-    },
-    {
-      "title": "Wal3: A Write-Ahead Log for Chroma, Built on Object Storage",
-      "link": "https://trychroma.com/engineering/wal3",
-      "ts": 1757004906000,
-      "source": "hnrss.org",
-      "country": "World",
-      "lat": 20,
-      "lon": 0
-    },
-    {
-      "title": "A PM's Guide to AI Agent Architecture",
-      "link": "https://www.productcurious.com/p/a-pms-guide-to-ai-agent-architecture",
-      "ts": 1757004339000,
-      "source": "hnrss.org",
-      "country": "World",
-      "lat": 20,
-      "lon": 0
-    },
-    {
-      "title": "Age Simulation Suit",
-      "link": "https://www.age-simulation-suit.com/",
-      "ts": 1757004084000,
-      "source": "hnrss.org",
-      "country": "World",
-      "lat": 20,
-      "lon": 0
-    },
-    {
-      "title": "How we built an interpreter for Swift",
-      "link": "https://www.bitrig.app/blog/swift-interpreter",
-      "ts": 1757003943000,
-      "source": "hnrss.org",
-      "country": "World",
-      "lat": 20,
-      "lon": 0
-    },
-    {
       "title": "SpaceX Dragon gives International Space Station a kick up the orbit",
       "link": "https://go.theregister.com/feed/www.theregister.com/2025/09/04/spacex_dragon_iss_reboost/",
       "ts": 1757003592000,
       "source": "theregister.com",
-      "country": "World",
-      "lat": 20,
-      "lon": 0
-    },
-    {
-      "title": "Stripe Launches L1 Blockchain: Tempo",
-      "link": "https://tempo.xyz",
-      "ts": 1757003544000,
-      "source": "hnrss.org",
-      "country": "World",
-      "lat": 20,
-      "lon": 0
-    },
-    {
-      "title": "Launch HN: Slashy (YC S25) – AI that connects to apps and does tasks",
-      "link": "https://news.ycombinator.com/item?id=45129031",
-      "ts": 1757003261000,
-      "source": "hnrss.org",
       "country": "World",
       "lat": 20,
       "lon": 0
@@ -291,15 +489,6 @@
       "lon": -4.6
     },
     {
-      "title": "Farewell to Meshnet",
-      "link": "https://nordvpn.com/blog/meshnet-shutdown/",
-      "ts": 1756999323000,
-      "source": "hnrss.org",
-      "country": "World",
-      "lat": 20,
-      "lon": 0
-    },
-    {
       "title": "Google told to pay $425m in privacy lawsuit",
       "link": "https://www.bbc.com/news/articles/c3dr91z0g4zo?at_medium=RSS&amp;at_campaign=rss",
       "ts": 1756998306000,
@@ -313,15 +502,6 @@
       "link": "https://go.theregister.com/feed/www.theregister.com/2025/09/04/postgresql_18/",
       "ts": 1756998014000,
       "source": "theregister.com",
-      "country": "World",
-      "lat": 20,
-      "lon": 0
-    },
-    {
-      "title": "WiFi signals can measure heart rate",
-      "link": "https://news.ucsc.edu/2025/09/pulse-fi-wifi-heart-rate/",
-      "ts": 1756997630000,
-      "source": "hnrss.org",
       "country": "World",
       "lat": 20,
       "lon": 0
@@ -367,24 +547,6 @@
       "link": "https://go.theregister.com/feed/www.theregister.com/2025/09/04/jim_bridenstine_nasa_moon/",
       "ts": 1756989912000,
       "source": "theregister.com",
-      "country": "World",
-      "lat": 20,
-      "lon": 0
-    },
-    {
-      "title": "Almost anything you give sustained attention to will begin to loop on itself",
-      "link": "https://www.henrikkarlsson.xyz/p/attention",
-      "ts": 1756988989000,
-      "source": "hnrss.org",
-      "country": "World",
-      "lat": 20,
-      "lon": 0
-    },
-    {
-      "title": "Atlassian is acquiring The Browser Company",
-      "link": "https://www.cnbc.com/2025/09/04/atlassian-the-browser-company-deal.html",
-      "ts": 1756987951000,
-      "source": "hnrss.org",
       "country": "World",
       "lat": 20,
       "lon": 0
@@ -489,15 +651,6 @@
       "lon": 0
     },
     {
-      "title": "US puts $10M bounty on three Russians accused of attacking critical infrastructure",
-      "link": "https://go.theregister.com/feed/www.theregister.com/2025/09/04/us_10m_bounty_fsb_attackers/",
-      "ts": 1756949470000,
-      "source": "theregister.com",
-      "country": "World",
-      "lat": 20,
-      "lon": 0
-    },
-    {
       "title": "Lost in translation - How Africa is trying to close the AI language gap",
       "link": "https://www.bbc.com/news/articles/crkzgkkpx0lo?at_medium=RSS&amp;at_campaign=rss",
       "ts": 1756945690000,
@@ -579,33 +732,6 @@
       "lon": 0
     },
     {
-      "title": "US offers $10 million bounty for info on Russian FSB hackers",
-      "link": "https://www.bleepingcomputer.com/news/security/us-offers-10-million-bounty-for-info-on-russian-fsb-hackers/",
-      "ts": 1756926106000,
-      "source": "bleepingcomputer.com",
-      "country": "US",
-      "lat": 39,
-      "lon": -98
-    },
-    {
-      "title": "Hackers use new HexStrike-AI tool to rapidly exploit n-day flaws",
-      "link": "https://www.bleepingcomputer.com/news/security/hackers-use-new-hexstrike-ai-tool-to-rapidly-exploit-n-day-flaws/",
-      "ts": 1756922622000,
-      "source": "bleepingcomputer.com",
-      "country": "US",
-      "lat": 39,
-      "lon": -98
-    },
-    {
-      "title": "US sues robot toy maker for exposing children's data to Chinese devs",
-      "link": "https://www.bleepingcomputer.com/news/security/us-sues-robot-toy-maker-for-exposing-childrens-data-to-chinese-devs/",
-      "ts": 1756922012000,
-      "source": "bleepingcomputer.com",
-      "country": "US",
-      "lat": 39,
-      "lon": -98
-    },
-    {
       "title": "M&S hackers claim to be behind Jaguar Land Rover cyber attack",
       "link": "https://www.bbc.com/news/articles/c4gqepe5355o?at_medium=RSS&amp;at_campaign=rss",
       "ts": 1756919321000,
@@ -627,15 +753,6 @@
       "title": "Gitpod reinvents itself as Ona in pivot to AI agent platform",
       "link": "https://go.theregister.com/feed/www.theregister.com/2025/09/03/gitpod_rebrands_as_ona/",
       "ts": 1756915214000,
-      "source": "theregister.com",
-      "country": "World",
-      "lat": 20,
-      "lon": 0
-    },
-    {
-      "title": "Salesforce sacrifices 4,000 support jobs on the altar of AI",
-      "link": "https://go.theregister.com/feed/www.theregister.com/2025/09/02/salesforce_4000_jobs_ai/",
-      "ts": 1756914825000,
       "source": "theregister.com",
       "country": "World",
       "lat": 20,
@@ -705,15 +822,6 @@
       "lon": 0
     },
     {
-      "title": "GNOME Foundation boss exits after just four months",
-      "link": "https://go.theregister.com/feed/www.theregister.com/2025/09/03/gnome_foundation_boss_quits/",
-      "ts": 1756891989000,
-      "source": "theregister.com",
-      "country": "World",
-      "lat": 20,
-      "lon": 0
-    },
-    {
       "title": "Family of dead teen say ChatGPT's new parental controls not enough",
       "link": "https://www.bbc.com/news/articles/cg505mn84ydo?at_medium=RSS&amp;at_campaign=rss",
       "ts": 1756888878000,
@@ -721,33 +829,6 @@
       "country": "UK",
       "lat": 54.8,
       "lon": -4.6
-    },
-    {
-      "title": "UK Home Office hikes tech consultant spend to £350M despite pledge to cut costs",
-      "link": "https://go.theregister.com/feed/www.theregister.com/2025/09/03/home_office_consultant_bill/",
-      "ts": 1756888209000,
-      "source": "theregister.com",
-      "country": "World",
-      "lat": 20,
-      "lon": 0
-    },
-    {
-      "title": "Judge who ruled Google is a monopoly decides to do hardly anything to break it up",
-      "link": "https://go.theregister.com/feed/www.theregister.com/2025/09/03/google_doj_antitrust_ruling/",
-      "ts": 1756885828000,
-      "source": "theregister.com",
-      "country": "World",
-      "lat": 20,
-      "lon": 0
-    },
-    {
-      "title": "Supermarket giant Tesco sues VMware, warns lack of support could disrupt food supply",
-      "link": "https://go.theregister.com/feed/www.theregister.com/2025/09/03/tesco_sues_vmware_broadcom_computacenter/",
-      "ts": 1756884529000,
-      "source": "theregister.com",
-      "country": "World",
-      "lat": 20,
-      "lon": 0
     },
     {
       "title": "A let-off or tougher than it looks? What the Google monopoly ruling means",
@@ -759,24 +840,6 @@
       "lon": -4.6
     },
     {
-      "title": "Internet mapping and research outfit Censys reveals state-based abuse, harassment",
-      "link": "https://go.theregister.com/feed/www.theregister.com/2025/09/03/censys_abuse_sigcomm_paper/",
-      "ts": 1756878854000,
-      "source": "theregister.com",
-      "country": "World",
-      "lat": 20,
-      "lon": 0
-    },
-    {
-      "title": "India hails 'first' home-grown chip as a milestone despite very modest specs",
-      "link": "https://go.theregister.com/feed/www.theregister.com/2025/09/03/india_hails_first_homegrown_chip/",
-      "ts": 1756870449000,
-      "source": "theregister.com",
-      "country": "World",
-      "lat": 20,
-      "lon": 0
-    },
-    {
       "title": "Google avoids break-up but must share data with rivals",
       "link": "https://www.bbc.com/news/articles/cp8zdrenm1zo?at_medium=RSS&amp;at_campaign=rss",
       "ts": 1756857106000,
@@ -784,33 +847,6 @@
       "country": "UK",
       "lat": 54.8,
       "lon": -4.6
-    },
-    {
-      "title": "How big will this Drift get? Cloudflare cops to Salesloft Drift breach",
-      "link": "https://go.theregister.com/feed/www.theregister.com/2025/09/02/cloudflare_salesloft_drift_breach/",
-      "ts": 1756846053000,
-      "source": "theregister.com",
-      "country": "World",
-      "lat": 20,
-      "lon": 0
-    },
-    {
-      "title": "Who watches the watchmen? Surveillanceware firms make bank, avoid oversight",
-      "link": "https://go.theregister.com/feed/www.theregister.com/2025/09/02/commercial_surveillanceware_safe/",
-      "ts": 1756844719000,
-      "source": "theregister.com",
-      "country": "World",
-      "lat": 20,
-      "lon": 0
-    },
-    {
-      "title": "Biden stopped ICE from buying Israeli spyware, but Trump admin allows it to proceed",
-      "link": "https://go.theregister.com/feed/www.theregister.com/2025/09/02/biden_stopped_ice_from_buying/",
-      "ts": 1756842359000,
-      "source": "theregister.com",
-      "country": "World",
-      "lat": 20,
-      "lon": 0
     },
     {
       "title": "Tech Life",
@@ -822,15 +858,6 @@
       "lon": -4.6
     },
     {
-      "title": "Total recall: Mistral AI's Le Chat can now remember your conversations",
-      "link": "https://go.theregister.com/feed/www.theregister.com/2025/09/02/mistral_ais_le_chat_can/",
-      "ts": 1756838584000,
-      "source": "theregister.com",
-      "country": "World",
-      "lat": 20,
-      "lon": 0
-    },
-    {
       "title": "Jaguar Land Rover production severely hit by cyber-attack",
       "link": "https://www.bbc.com/news/articles/c9wywvllq7wo?at_medium=RSS&amp;at_campaign=rss",
       "ts": 1756838379000,
@@ -838,24 +865,6 @@
       "country": "UK",
       "lat": 54.8,
       "lon": -4.6
-    },
-    {
-      "title": "Zscaler latest victim of Salesloft Drift attacks, customer data exposed",
-      "link": "https://go.theregister.com/feed/www.theregister.com/2025/09/02/zscaler_customer_data_drift_compromise/",
-      "ts": 1756835643000,
-      "source": "theregister.com",
-      "country": "World",
-      "lat": 20,
-      "lon": 0
-    },
-    {
-      "title": "Microsoft rewarded for security failures with another US government contract",
-      "link": "https://go.theregister.com/feed/www.theregister.com/2025/09/02/microsoft_rewarded_for_security_failures/",
-      "ts": 1756832806000,
-      "source": "theregister.com",
-      "country": "World",
-      "lat": 20,
-      "lon": 0
     },
     {
       "title": "Ticketless train travel to be trialled across cities",
