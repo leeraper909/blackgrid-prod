@@ -1,8 +1,7 @@
 name: Build & Deploy
-
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   workflow_dispatch:
 
 jobs:
@@ -13,33 +12,22 @@ jobs:
     env:
       NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
       NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-
     steps:
       - uses: actions/checkout@v4
-
       - uses: actions/setup-node@v4
         with:
-          node-version: '20'
-
-      # Prove the token & site ID are valid (hard fail if not)
-      - name: Netlify auth preflight
-        run: |
-          set -euo pipefail
-          test -n "$NETLIFY_SITE_ID" && test -n "$NETLIFY_AUTH_TOKEN"
-          curl -sf -H "Authorization: Bearer $NETLIFY_AUTH_TOKEN" \
-            "https://api.netlify.com/api/v1/sites/$NETLIFY_SITE_ID" \
-            | jq -r '.id+"  "+.name'
-
-      - name: Install Netlify CLI (v17)
-        run: npm i -g netlify-cli@17
+          node-version: "20"
+      - run: npm i -g netlify-cli@17
 
       - name: Build feed snapshots
         run: node scripts/build-feeds.mjs
 
-      - name: Netlify CLI status
+      - name: Netlify auth preflight
         run: |
-          netlify --version
-          netlify status --json || true
+          set -euo pipefail
+          curl -sf -H "Authorization: Bearer $NETLIFY_AUTH_TOKEN" \
+            "https://api.netlify.com/api/v1/sites/$NETLIFY_SITE_ID" \
+            | jq -r '.id+"  "+.name'
 
       - name: Deploy to Netlify (prod)
         env:
@@ -50,5 +38,4 @@ jobs:
             --dir=public \
             --site="$NETLIFY_SITE_ID" \
             --auth="$NETLIFY_AUTH_TOKEN" \
-            --json \
             --skip-functions-cache
