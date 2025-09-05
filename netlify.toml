@@ -1,0 +1,36 @@
+[build]
+  publish = "public"
+  functions = "netlify/functions"
+
+[functions]
+  node_bundler = "esbuild"
+  # Netlify provides @netlify/blobs at runtime; keep it external to avoid bundle errors
+  external_node_modules = ["@netlify/blobs"]
+
+# Security headers
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "no-referrer"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=()"
+    Content-Security-Policy = "default-src 'self'; base-uri 'none'; object-src 'none'; frame-ancestors 'none'; img-src 'self' https: data:; font-src 'self' data:; style-src 'self' 'unsafe-inline' https://unpkg.com; script-src 'self' https://unpkg.com; connect-src 'self'; upgrade-insecure-requests;"
+
+# Cache the static feed hard at the edge
+[[headers]]
+  for = "/data/*.json"
+  [headers.values]
+    Cache-Control = "public, max-age=120, s-maxage=120, stale-while-revalidate=600"
+
+# Clean alias for the static feed (clients should use this)
+[[redirects]]
+  from = "/api/feeds"
+  to   = "/data/feeds.json"
+  status = 200
+
+# Keep only schedules you actually use
+[[scheduled.functions]]
+  name = "daily-digest"
+  cron = "0 7 * * *"
