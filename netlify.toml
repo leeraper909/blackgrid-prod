@@ -34,3 +34,22 @@
 [[scheduled.functions]]
   name = "daily-digest"
   cron = "0 7 * * *"
+# BEGIN pentest-kit
+[build]
+  publish         = "public"
+  functions       = "netlify/functions"
+  edge_functions  = "netlify/edge-functions"
+
+# Edge functions run top-to-bottom
+[[edge_functions]]
+  function = "kill-switch"
+  path     = "/*"
+
+[[edge_functions]]
+  function = "protect-trial"
+  path     = "/trial/*"
+
+[[edge_functions]]
+  function = "rate-limit"
+  path     = "/api/*"
+# END pentest-kit
