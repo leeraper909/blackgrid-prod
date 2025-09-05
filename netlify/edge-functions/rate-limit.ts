@@ -1,99 +1,70 @@
-// Config via env
-const LIMIT_PER_MIN   = Number(Deno.env.get('RL_LIMIT') || 60);
-const WINDOW_SECONDS  = Number(Deno.env.get('RL_WINDOW') || 60);
-const RL_COOKIE       = Deno.env.get('RL_COOKIE') || 'rl';
-const RL_SECRET       = Deno.env.get('RL_SECRET') || 'change-me';
-const ALLOW_IPS_RAW   = (Deno.env.get('ALLOW_IPS') || '').trim(); // comma-separated exact IPs
-
 const enc = new TextEncoder();
+const RL_COOKIE = "rl";
+const LIMIT = parseInt(Deno.env.get("RL_LIMIT") || "60", 10);
+const WINDOW = parseInt(Deno.env.get("RL_WINDOW") || "60", 10);
+const SECRET = Deno.env.get("RL_SECRET") || "dev-secret";
 
-function b64url(u8: Uint8Array) {
-  let s = btoa(String.fromCharCode(...u8));
-  return s.replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
+function b64url(bytes: ArrayBuffer) {
+  let s = "";
+  const a = new Uint8Array(bytes);
+  for (let i = 0; i < a.length; i++) s += String.fromCharCode(a[i]);
+  return btoa(s).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/,"");
 }
 async function hmac(data: string) {
-  const key = await crypto.subtle.importKey('raw', enc.encode(RL_SECRET), {name: 'HMAC', hash: 'SHA-256'}, false, ['sign']);
-  const sig = await crypto.subtle.sign('HMAC', key, enc.encode(data));
-  return b64url(new Uint8Array(sig));
+  const key = await crypto.subtle.importKey("raw", enc.encode(SECRET), { name: "HMAC", hash: "SHA-256" }, false, ["sign"]);
+  const mac = await crypto.subtle.sign("HMAC", key, enc.encode(data));
+  return b64url(mac);
+}
+function parseCookie(raw: string | null) {
+  if (!raw) return null;
+  const m = raw.match(new RegExp(`(?:^|;\\s*)${RL_COOKIE}=([^;]+)`));
+  if (!m) return null;
+  const [ts, c, sig] = m[1].split(".");
+  const tsNum = parseInt(ts || "0", 10);
+  const countNum = parseInt(c || "0", 10);
+  if (!Number.isFinite(tsNum) || !Number.isFinite(countNum) || !sig) return null;
+  return { ts: tsNum, count: countNum, sig };
 }
 
-function parseCookies(h: Headers) {
-  const out: Record<string,string> = {};
-  const c = h.get('cookie') || '';
-  for (const part of c.split(';')) {
-    const [k, ...rest] = part.trim().split('=');
-    if (!k) continue;
-    out[k] = rest.join('=');
-  }
-  return out;
-}
-
-function ipFrom(req: Request, ctx: any): string {
-  return (ctx.ip || req.headers.get('x-forwarded-for') || '').split(',')[0].trim() || 'unknown';
-}
-
-function inAllowList(ip: string): boolean {
-  if (!ALLOW_IPS_RAW) return false;
-  return ALLOW_IPS_RAW.split(',').map(s => s.trim()).filter(Boolean).includes(ip);
-}
-
-export default async (req: Request, ctx: any) => {
-  const url = new URL(req.url);
-  if (!url.pathname.startsWith('/api/')) return await ctx.next();
-
-  const ip = ipFrom(req, ctx);
-  if (inAllowList(ip)) return await ctx.next();
-
+export default async (req: Request) => {
   const now = Math.floor(Date.now() / 1000);
-  const windowStart = now - (now % WINDOW_SECONDS);
-  const cookies = parseCookies(req.headers);
-  const current = cookies[RL_COOKIE];
+  const windowStart = Math.floor(now / WINDOW) * WINDOW;
 
   let count = 0;
-  let expectedSig = '';
-  const payload = (v: number) => `${ip}.${windowStart}.${v}`;
-
-  if (current) {
-    const [startStr, countStr, sig] = current.split('.');
-    const start = Number(startStr);
-    const c     = Number(countStr);
-    expectedSig = await hmac(`${ip}.${start}.${c}`);
-    if (sig === expectedSig && start === windowStart) {
-      count = c;
-    } // else: invalid or stale -> reset
+  const parsed = parseCookie(req.headers.get("cookie"));
+  if (parsed) {
+    const goodSig = await hmac(`${parsed.ts}.${parsed.count}`);
+    if (parsed.sig === goodSig && parsed.ts === windowStart) {
+      count = parsed.count;
+    }
   }
 
   count += 1;
 
-  if (count > LIMIT_PER_MIN) {
-    const retryAfter = WINDOW_SECONDS - (now - windowStart);
-    return new Response(JSON.stringify({
-      error: 'rate_limited',
-      limit: LIMIT_PER_MIN,
-      retry_after: retryAfter
-    }), {
-      status: 429,
-      headers: {
-        'content-type': 'application/json',
-        'cache-control': 'no-store, max-age=0',
-        'retry-after': String(retryAfter),
-        'x-ratelimit-limit': String(LIMIT_PER_MIN),
-        'x-ratelimit-remaining': '0',
-        'x-ratelimit-reset': String(windowStart + WINDOW_SECONDS)
-      }
-    });
+  const sig = await hmac(`${windowStart}.${count}`);
+  const cookieVal = `${RL_COOKIE}=${windowStart}.${count}.${sig}; Max-Age=${WINDOW + 5}; Path=/api; Secure; SameSite=Lax; HttpOnly`;
+  const resetAt = windowStart + WINDOW;
+
+  if (count > LIMIT) {
+    const retry = Math.max(1, resetAt - now);
+    const headers = {
+      "content-type": "application/json",
+      "x-ratelimit-limit": String(LIMIT),
+      "x-ratelimit-remaining": "0",
+      "x-ratelimit-reset": String(resetAt),
+      "retry-after": String(retry),
+      "set-cookie": cookieVal,
+    };
+    return new Response(JSON.stringify({ error: "rate_limited" }), { status: 429, headers });
   }
 
-  const sig = await hmac(payload(count));
-  const cookieVal = `${windowStart}.${count}.${sig}`;
-  const maxAge = WINDOW_SECONDS + 5;
-
-  const res = await ctx.next();
-  const headers = new Headers(res.headers);
-  headers.set('Set-Cookie', `${RL_COOKIE}=${cookieVal}; Max-Age=${maxAge}; Path=/api; Secure; SameSite=Lax; HttpOnly`);
-  headers.set('x-ratelimit-limit', String(LIMIT_PER_MIN));
-  headers.set('x-ratelimit-remaining', String(Math.max(0, LIMIT_PER_MIN - count)));
-  headers.set('x-ratelimit-reset', String(windowStart + WINDOW_SECONDS));
-
-  return new Response(res.body, { status: res.status, headers });
+  const url = new URL(req.url);
+  url.pathname = "/.netlify/functions/healthcheck";
+  const upstream = await fetch(new Request(url.toString(), req));
+  const headers = new Headers(upstream.headers);
+  headers.set("x-ratelimit-limit", String(LIMIT));
+  headers.set("x-ratelimit-remaining", String(Math.max(0, LIMIT - count)));
+  headers.set("x-ratelimit-reset", String(resetAt));
+  headers.append("set-cookie", cookieVal);
+  return new Response(upstream.body, { status: upstream.status, headers });
 };

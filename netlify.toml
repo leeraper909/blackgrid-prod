@@ -1,46 +1,12 @@
 [build]
-  publish = "public"
-  functions = "netlify/functions"
+  publish        = "public"
+  functions      = "netlify/functions"
+  edge_functions = "netlify/edge-functions"
 
-[functions]
-  node_bundler = "esbuild"
-  # Netlify provides @netlify/blobs at runtime; keep it external to avoid bundle errors
-  external_node_modules = ["@netlify/blobs"]
+[[edge_functions]]
+  function = "rate-limit"
+  path     = "/api/*"
 
-# Security headers
-[[headers]]
-  for = "/*"
-  [headers.values]
-    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
-    X-Frame-Options = "DENY"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "no-referrer"
-    Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=()"
-    Content-Security-Policy = "default-src 'self'; base-uri 'none'; object-src 'none'; frame-ancestors 'none'; img-src 'self' https: data:; font-src 'self' data:; style-src 'self' 'unsafe-inline' https://unpkg.com; script-src 'self' https://unpkg.com; connect-src 'self'; upgrade-insecure-requests;"
-
-# Cache the static feed hard at the edge
-[[headers]]
-  for = "/data/*.json"
-  [headers.values]
-    Cache-Control = "public, max-age=120, s-maxage=120, stale-while-revalidate=600"
-
-# Clean alias for the static feed (clients should use this)
-[[redirects]]
-  from = "/api/feeds"
-  to   = "/data/feeds.json"
-  status = 200
-
-# Keep only schedules you actually use
-[[scheduled.functions]]
-  name = "daily-digest"
-  cron = "0 7 * * *"
-# BEGIN pentest-kit
-[build]
-  publish         = "public"
-  functions       = "netlify/functions"
-  edge_functions  = "netlify/edge-functions"
-
-# Edge functions run top-to-bottom
 [[edge_functions]]
   function = "kill-switch"
   path     = "/*"
@@ -48,8 +14,17 @@
 [[edge_functions]]
   function = "protect-trial"
   path     = "/trial/*"
-
-[[edge_functions]]
-  function = "rate-limit"
-  path     = "/api/*"
-# END pentest-kit
+# --- security headers ---
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Content-Security-Policy = "default-src 'self'; base-uri 'none'; object-src 'none'; frame-ancestors 'none'; img-src 'self' https: data:; font-src 'self' data:; style-src 'self' 'unsafe-inline' https://unpkg.com; script-src 'self' https://unpkg.com; connect-src 'self'; upgrade-insecure-requests;"
+    Referrer-Policy = "no-referrer"
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=()"
+# --- end security headers ---
+[[redirects]]
+  from = "/security.txt"
+  to   = "/.well-known/security.txt"
+  status = 200
