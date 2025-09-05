@@ -1,0 +1,7 @@
+BEGIN:VCARD
+VERSION:3.0
+FN:BlackGrid
+ORG:BlackGrid
+EMAIL;TYPE=internet:contact@blackgrid.example
+URL:https://blackgrid-prod.netlify.app
+END:VCARD

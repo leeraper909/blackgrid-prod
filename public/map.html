@@ -1,0 +1,53 @@
+<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BlackGrid • Live Cyber Map</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  integrity="sha256-o9N1j8Mk3Z9n6QnV6C0HnK2WcU5t2GQ6M1R9Z3x0iCk=" crossorigin="">
+<style>
+  body{margin:0;background:#0b0f14;color:#e6edf3;font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+  #map{position:fixed;inset:0}
+  .toolbar{position:fixed;top:10px;left:10px;background:#0f1621;border:1px solid #1f2a37;border-radius:12px;padding:8px 10px;z-index:1000}
+  .btn{background:#132032;border:1px solid #263445;border-radius:10px;padding:6px 10px;margin-right:6px;cursor:pointer}
+  .btn[aria-pressed="true"]{border-color:#00d1b2;box-shadow:0 0 0 2px rgba(0,209,178,.25) inset}
+  .pulse{width:14px;height:14px;border-radius:50%;background:#00d1b2;opacity:.85;box-shadow:0 0 0 0 rgba(0,209,178,.6);animation:pulse 2s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(0,209,178,.6)}70%{box-shadow:0 0 0 12px rgba(0,209,178,0)}100%{box-shadow:0 0 0 0 rgba(0,209,178,0)}}
+</style>
+<div class="toolbar">
+  <button class="btn" id="mAll" aria-pressed="true">All</button>
+  <button class="btn" id="mUKEU" aria-pressed="false">UK & EU</button>
+</div>
+<div id="map"></div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+  integrity="sha256-o9m0dtnYF2P1VfI8auV3z0hJXv+g9EoGq4nFvZQ4vJM=" crossorigin=""></script>
+<script>
+  const map = L.map('map', { zoomControl:true, minZoom:2, maxZoom:6 }).setView([20,0], 2);
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 6, attribution:'&copy; OpenStreetMap'
+  }).addTo(map);
+
+  let region='all', markers=[];
+  const mAll  = document.getElementById('mAll');
+  const mUKEU = document.getElementById('mUKEU');
+  function setButtons(){
+    mAll.setAttribute('aria-pressed', String(region==='all'));
+    mUKEU.setAttribute('aria-pressed', String(region==='uk-eu'));
+  }
+
+  async function load(){
+    try{
+      const r = await fetch(`/.netlify/functions/feeds?region=${region}&bias=uk&limit=200`, { cache:'no-store' });
+      const j = await r.json();
+      markers.forEach(m=>m.remove()); markers=[];
+      markers = (j.items||[]).map(it=>{
+        const el = document.createElement('div'); el.className='pulse';
+        const title = (it.title||'').slice(0,140);
+        const host  = (it.source||'').replace(/^www\./,'');
+        el.title = `${title}\n${host}`;
+        return L.marker([it.lat||20, it.lon||0], { icon: L.divIcon({ className:'', html:el, iconSize:[14,14] }) }).addTo(map);
+      });
+    }catch(e){}
+  }
+  mAll.onclick = ()=>{ region='all'; setButtons(); load(); history.replaceState({},'',location.pathname+'#all'); };
+  mUKEU.onclick = ()=>{ region='uk-eu'; setButtons(); load(); history.replaceState({},'',location.pathname+'#uk-eu'); };
+  if (location.hash==='#uk-eu') region='uk-eu';
+  setButtons(); load(); setInterval(load, 60000);
+</script>

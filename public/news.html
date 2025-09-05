@@ -1,0 +1,108 @@
+<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BlackGrid • Live Cyber News</title>
+<style>
+  body{margin:0;background:#0b0f14;color:#e6edf3;font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+  header{padding:16px 20px;border-bottom:1px solid #1f2a37;background:#0f1621;position:sticky;top:0;z-index:10}
+  .controls{display:grid;grid-template-columns:1fr auto auto;gap:12px;align-items:center}
+  .btn{background:#132032;border:1px solid #263445;border-radius:10px;padding:8px 12px;cursor:pointer}
+  .btn[aria-pressed="true"]{border-color:#00d1b2;box-shadow:0 0 0 2px rgba(0,209,178,.25) inset}
+  .text{background:#0b1320;border:1px solid #263445;border-radius:10px;padding:9px 12px;color:#e6edf3}
+  .share{justify-self:end}
+  main{max-width:1100px;margin:18px auto;padding:0 16px}
+  .card{border:1px solid #1f2a37;background:#0f1621;border-radius:14px;padding:14px 16px;margin:10px 0}
+  .meta{opacity:.7;font-size:.9rem}
+  a{color:#00d1b2;text-decoration:none} a:hover{text-decoration:underline}
+  .muted{opacity:.7}
+</style>
+<header>
+  <div class="controls">
+    <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
+      <strong>Region:</strong>
+      <button class="btn" id="bAll"  aria-pressed="true">All</button>
+      <button class="btn" id="bUKEU" aria-pressed="false">UK & EU</button>
+      <span id="count" class="muted"></span>
+    </div>
+    <label style="display:flex;gap:8px;align-items:center">
+      <span class="muted" style="white-space:nowrap">Search</span>
+      <input class="text" id="q" placeholder="headlines, sources…" autocomplete="off" />
+    </label>
+    <button class="btn share" id="shareBtn" title="Copy link to this view">Copy link</button>
+  </div>
+</header>
+<main id="list"></main>
+<script>
+  let region='all', query='';
+  let allItems=[];
+
+  const list  = document.getElementById('list');
+  const count = document.getElementById('count');
+  const bAll  = document.getElementById('bAll');
+  const bUKEU = document.getElementById('bUKEU');
+  const q     = document.getElementById('q');
+  const share = document.getElementById('shareBtn');
+
+  function readHash(){
+    const h = new URLSearchParams(location.hash.slice(1));
+    region = (h.get('region') || 'all').toLowerCase();
+    query  = (h.get('q') || '');
+    q.value = query;
+  }
+  function writeHash(){
+    const h = new URLSearchParams();
+    h.set('region', region);
+    if (query) h.set('q', query);
+    history.replaceState({},'',location.pathname + '#' + h.toString());
+  }
+  function setButtons(){
+    bAll.setAttribute('aria-pressed', String(region==='all'));
+    bUKEU.setAttribute('aria-pressed', String(region==='uk-eu'));
+  }
+  function timeago(ts){ const d=Math.max(0, Date.now()-(ts||Date.now())); const m=Math.floor(d/6e4), h=Math.floor(m/60); return h?`${h}h ago`:`${m}m ago`; }
+  function esc(s){return (s||'').replace(/[&<>"]/g,m=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;' }[m]));}
+
+  async function load(){
+    try{
+      const r = await fetch(`/.netlify/functions/feeds?region=${region}&limit=200`, { cache:'no-store' });
+      const j = await r.json();
+      allItems = j.items || [];
+      render();
+    }catch(e){
+      list.innerHTML='<p>Feed error.</p>';
+    }
+  }
+  function render(){
+    const qx = query.trim().toLowerCase();
+    const items = qx
+      ? allItems.filter(it=>{
+          const t=(it.title||'').toLowerCase();
+          const s=(it.source||'').toLowerCase();
+          const c=(it.country||'').toLowerCase();
+          return t.includes(qx) || s.includes(qx) || c.includes(qx);
+        })
+      : allItems;
+
+    count.textContent = `${items.length} stories`;
+    list.innerHTML = items.map(it=>{
+      const host = (it.source||'').replace(/^www\./,'');
+      const when = timeago(it.ts);
+      const badge = it.country ? ` · ${it.country}` : '';
+      return `<div class="card">
+        <a href="${it.link}" rel="noopener noreferrer" target="_blank">${esc(it.title||'(untitled)')}</a>
+        <div class="meta">${esc(host)}${badge} · ${when}</div>
+      </div>`;
+    }).join('') || '<p>No items.</p>';
+  }
+
+  bAll.onclick  = ()=>{ region='all';  setButtons(); writeHash(); load(); };
+  bUKEU.onclick = ()=>{ region='uk-eu'; setButtons(); writeHash(); load(); };
+  q.addEventListener('input', ()=>{ query = q.value; writeHash(); render(); });
+
+  share.onclick = async ()=>{
+    writeHash();
+    const url = location.href;
+    try { await navigator.clipboard.writeText(url); share.textContent='Copied!'; setTimeout(()=>share.textContent='Copy link', 1200); }
+    catch { prompt('Copy link:', url); }
+  };
+
+  readHash(); setButtons(); load(); setInterval(load, 120000);
+</script>

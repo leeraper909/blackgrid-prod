@@ -1,0 +1,43 @@
+<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width">
+<title>BlackGrid</title>
+<style>
+  body{margin:0;background:#0b0f14;color:#e6edf3;font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+  header{padding:20px}
+  a{color:#00d1b2;text-decoration:none} a:hover{text-decoration:underline}
+  .wrap{max-width:900px;margin:0 auto;padding:0 16px}
+  .ticker{overflow:hidden;white-space:nowrap;border-top:1px solid #1f2a37;border-bottom:1px solid #1f2a37;background:#0f1621}
+  .row{display:inline-block;padding:10px 0;animation:scroll 35s linear infinite}
+  .item{display:inline-flex;gap:6px;align-items:center;padding:0 18px;border-right:1px solid #1f2a37}
+  .badge{font-size:.75rem;opacity:.75}
+  .dot{width:6px;height:6px;border-radius:50%;background:#00d1b2;display:inline-block;margin-right:4px}
+  @keyframes scroll{0%{transform:translateX(100%)}100%{transform:translateX(-100%)}}
+  @media (prefers-reduced-motion: reduce){ .row{animation:none} }
+</style>
+<header class="wrap">
+  <h1>BlackGrid</h1>
+  <p>Welcome. <a href="/_forms/digest.html">Join the digest</a> · <a href="/news">News</a> · <a href="/map">Map</a></p>
+</header>
+
+<div class="ticker" id="ticker"><div class="row" id="row"></div></div>
+
+<script>
+(async function(){
+  try{
+    const r = await fetch('/.netlify/functions/feeds?region=uk-eu&bias=uk&limit=40', { cache:'no-store' });
+    const j = await r.json();
+    const items = (j.items||[]).map(it=>{
+      const host=(it.source||'').replace(/^www\./,'');
+      const tag = it.country || '';
+      return `<span class="item">
+        <span class="dot"></span>
+        <a href="${it.link}" target="_blank" rel="noopener">${escapeHtml(it.title||'')}</a>
+        <span class="badge">· ${escapeHtml(host)}${tag?(' · '+tag):''}</span>
+      </span>`;
+    }).join('');
+    document.getElementById('row').innerHTML = items || '<span class="item">No live items</span>';
+  }catch(e){
+    document.getElementById('row').innerHTML = '<span class="item">Feed unavailable</span>';
+  }
+  function escapeHtml(s){return (s||'').replace(/[&<>"]/g,m=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;' }[m]));}
+})();
+</script>
